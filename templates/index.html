@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lilie - Sua Companheira</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="relative h-screen flex flex-col">
+
+    <!-- Camada de Fundo Estrelado -->
+    <div class="star-container" id="star-background"></div>
+
+    <!-- Cabeçalho -->
+    <header class="relative z-10 p-4 flex items-center justify-between backdrop-blur-md bg-white/40 border-b border-red-100 shadow-sm">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center text-red-500 shadow-inner">
+                <i class="fa-solid fa-wand-magic-sparkles text-lg"></i>
+            </div>
+            <h1 class="text-red-600 font-bold text-2xl tracking-tight">Lilie</h1>
+        </div>
+        <div class="bg-red-500/10 text-red-500 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">
+            Simulação Ativa
+        </div>
+    </header>
+
+    <!-- Área de Conteúdo Principal -->
+    <main class="relative z-10 flex-1 flex flex-col p-4 max-w-4xl mx-auto w-full overflow-hidden">
+        
+        <!-- Output: Campo de texto controlado dinamicamente para resposta da Lilie -->
+        <div class="mb-6 fade-in">
+            <label class="text-[10px] font-bold text-red-400 uppercase ml-4 mb-2 block tracking-widest">Lilie diz:</label>
+            <input 
+                type="text" 
+                id="bot-output-field" 
+                readonly 
+                value="Olá! Como posso te ajudar hoje?" 
+                class="w-full bg-white/90 border-2 border-red-100 text-red-700 rounded-full px-7 py-4 outline-none font-semibold shadow-md italic transition-all duration-500"
+            >
+        </div>
+
+        <!-- Histórico de Chat para Visualização -->
+        <div id="chat-history" class="flex-1 overflow-y-auto space-y-4 mb-4 pr-2">
+        </div>
+    </main>
+
+    <!-- Rodapé com Formulário de Envio -->
+    <footer class="relative z-10 p-4 pb-10 backdrop-blur-xl bg-white/30 border-t border-red-100/30">
+        <form id="chat-form" class="max-w-4xl mx-auto flex items-center gap-3">
+            <div class="flex-1">
+                <input 
+                    type="text" 
+                    id="user-input" 
+                    placeholder="Sua mensagem para a Lilie..." 
+                    autocomplete="off"
+                    required
+                    class="w-full bg-white/95 text-red-900 border-2 border-red-100 rounded-full px-7 py-4 outline-none neon-input transition-all placeholder:text-red-300 font-medium text-base shadow-lg"
+                >
+            </div>
+            <button 
+                type="submit" 
+                class="w-14 h-14 rounded-full bg-red-500 text-white flex items-center justify-center shadow-xl shadow-red-500/30 transition-all active:scale-90 hover:bg-red-600"
+            >
+                <i class="fa-solid fa-paper-plane text-xl"></i>
+            </button>
+        </form>
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
