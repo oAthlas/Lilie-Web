@@ -50,3 +50,79 @@ body {
     background: rgba(239, 68, 68, 0.2);
     border-radius: 10px;
 }
+
+/* Overlay pai */
+.welcome-overlay {
+    position: fixed;
+    inset: 0; /* top, right, bottom, left = 0 */
+    background-color: rgba(128, 128, 128, 0.7); /* cinza com opacidade */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+/* Modal (div filha) */
+.welcome-modal {
+    background-color: #ffffff;
+    border: 2px solid #ef4444; /* vermelho neon */
+    border-radius: 12px;
+    padding: 24px 20px;
+    width: 90%;
+    max-width: 420px;
+    box-shadow: 0 0 20px rgba(255, 0, 51, 0.6);
+    text-align: center;
+}
+
+/* Título */
+.welcome-modal h1 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    color: #111;
+}
+
+/* Texto */
+.welcome-modal p {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Botão */
+.welcome-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: #ef4444;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.welcome-btn:active {
+    transform: scale(0.97);
+}
+
+/* Desktop e telas maiores */
+@media (min-width: 768px) {
+    .welcome-modal {
+        padding: 32px 28px;
+    }
+
+    .welcome-modal h1 {
+        font-size: 1.8rem;
+    }
+
+    .welcome-modal p {
+        font-size: 1.05rem;
+    }
+
+    .welcome-btn {
+        width: auto;
+        padding: 12px 32px;
+    }
+}

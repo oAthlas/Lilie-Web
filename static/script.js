@@ -78,3 +78,11 @@ const text = input.value.trim();
 const data = await response.json();
     lilieTextEl.textContent = data.reply;
 });
+
+const welcome = document.getElementById('welcome-overlay');
+const welcomeButton = document.getElementById('welcome-button');
+
+welcomeButton.addEventListener('click', (event) => {
+    welcome.style.zIndex = '-1';
+    welcome.style.opacity = '0';
+});
