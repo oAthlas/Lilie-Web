@@ -56,6 +56,20 @@ scrollChatToBottom();
 return textPLilie;
 }
 
+function formatText(text, container) {
+  container.innerHTML = "";
+
+  const paragraphs = text.split("\n\n");
+
+  paragraphs.forEach(paragraph => {
+    const p = document.createElement("p");
+    p.textContent = paragraph;
+    p.className = "text-sm leading-relaxed mb-2";
+    container.appendChild(p);
+  });
+}
+
+
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
     
@@ -76,7 +90,7 @@ const text = input.value.trim();
     });
 
 const data = await response.json();
-    lilieTextEl.textContent = data.reply;
+    formatText(data.reply, lilieTextEl.parentElement);
 });
 
 const welcome = document.getElementById('welcome-overlay');
