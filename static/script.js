@@ -37,6 +37,22 @@ chatHistory.appendChild(outerDiv);
 scrollChatToBottom();
 }
 
+function formatGeminiText(text) {
+  text = text.replace(/\r\n/g, "\n");
+
+  // Negrito
+  text = text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+
+  // Títulos
+  text = text.replace(/^### (.*$)/gim, "<h3 class='text-lg font-bold mt-3 mb-2'>$1</h3>");
+  text = text.replace(/^## (.*$)/gim, "<h2 class='text-xl font-bold mt-4 mb-2'>$1</h2>");
+
+  // Quebras de linha
+  text = text.replace(/\n/g, "<br>");
+
+  return text;
+}
+
 function addLilieMessage(text) {
 const outerDivLilie = document.createElement("div");
 outerDivLilie.className = "flex justify-start fade-in mb-4";
@@ -46,7 +62,7 @@ bubbleDivLilie.className = "bg-white/95 text-red-900 border border-red-50 border
 
 const textPLilie = document.createElement("p");
 textPLilie.className = "text-sm font-medium";
-textPLilie.textContent = text;
+textPLilie.innerHTML = formatGeminiText(text);
 
 bubbleDivLilie.appendChild(textPLilie);
 outerDivLilie.appendChild(bubbleDivLilie);
@@ -55,20 +71,6 @@ scrollChatToBottom();
 
 return textPLilie;
 }
-
-function formatText(text, container) {
-  container.innerHTML = "";
-
-  const paragraphs = text.split("\n\n");
-
-  paragraphs.forEach(paragraph => {
-    const p = document.createElement("p");
-    p.textContent = paragraph;
-    p.className = "text-sm leading-relaxed mb-2";
-    container.appendChild(p);
-  });
-}
-
 
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -90,7 +92,7 @@ const text = input.value.trim();
     });
 
 const data = await response.json();
-    formatText(data.reply, lilieTextEl.parentElement);
+    lilieTextEl.innerHTML = formatGeminiText(data.reply);
 });
 
 const welcome = document.getElementById('welcome-overlay');

@@ -1,8 +1,11 @@
 from os import getenv
+from xmlrpc import client
 from flask import Flask, jsonify, render_template, request
-from openai import OpenAI
+from google import genai
 
 app = Flask(__name__)
+GEMINI_API_KEY = getenv("GEMINI_API_KEY")
+client = genai.Client()
 
 # rotas
 @app.route('/')
@@ -14,25 +17,13 @@ def chat():
     data = request.get_json()
     user_message = data["message"]
 
-    client = OpenAI(
-        base_url="https://openrouter.ai/api/v1",
-        api_key=getenv("OPENROUTER_API_KEY"),
-    )
-
-    completion = client.chat.completions.create(
-    model="openrouter/free",
-
-    messages=[
-        {
-        "role": "user",
-        "content": user_message
-        }
-    ]
+    response = client.models.generate_content(
+    model="gemini-3-flash-preview", 
+    contents=user_message
 )
     
-    reply = completion.choices[0].message.content
-    return jsonify({"reply": reply}
-)
+    reply = response.text if response.text else "Desculpe, não consegui gerar uma resposta."
+    return jsonify({"reply": reply})
 
 
 if __name__ == '__main__':
