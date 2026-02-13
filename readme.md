@@ -11,6 +11,7 @@ A Lilie agora é um chatbot simples, sem todas as funcionalidades extras e ultra
 - Interface nova usando tons pasteis de vermelho e rosa
 - Perca de personalidade em troca de extremma abrangência de tons a serem explorados
 - Extrema simplicidade, focando completamente no aprendizado enquanto construída
+- Novo modelo de linguagem, antes DeepSeek via OpenRouter, agora Gemini via GenAi
 
 ## Nova estrutura
 
